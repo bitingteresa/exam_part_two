@@ -36,7 +36,9 @@ var library = new Librarian();
 var mobyDick = new Book("moby dick", "melville, herman", "fiction", "long", "checked in");
 var sedaris = new Book("dress up your family in corduory and denim", "sedaris, david", "nonfiction", "short", "checked out");
 var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "checked in");
-
+library.books.push(mobyDick);
+library.books.push(sedaris);
+library.books.push(maus);
 
 
 
