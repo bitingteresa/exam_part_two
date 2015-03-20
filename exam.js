@@ -17,7 +17,7 @@ function Librarian(){
 		}
 	}
 	this.createBook = function() {
-
+		this.books.push(new Book(input('Enter a title'), input('Enter Author Last Name, First Name'), input('Enter genre'), input('Size of Book'), input('Checked Status')));
 	};
 	this.removeBook = function(userInput) {
 
@@ -41,6 +41,8 @@ var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "in");
 library.books.push(mobyDick);
 library.books.push(sedaris);
 library.books.push(maus);
+
+library.createBook();
 library.viewAllBooks();
 
 
