@@ -68,7 +68,7 @@ function input(saying) {
 }
 
 function menu() {
-	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Quit')) {
+	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - Quit')) {
 		case '1':
 			library.viewAllBooks();
 			menu();
@@ -94,6 +94,10 @@ function menu() {
 			menu();
 			break;
 		case '7':
+			library.changeStatus(input('Please enter in the title you would like to change the status of'), input('Enter in the new status'));
+			menu();
+			break;
+		case '8':
 			process.exit(0);
 		default:
 			console.log('Please enter a valid entry.');
