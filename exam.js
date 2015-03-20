@@ -38,7 +38,10 @@ function Librarian(){
 	};
 	this.searchAuthor = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
-			
+			if (this.books[i].author === userInput) {
+				console.log(this.books[i]);
+				return;
+			}
 		}
 	};
 	this.displayGenre = function(userInput) {
@@ -59,9 +62,10 @@ var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "in");
 library.books.push(mobyDick);
 library.books.push(sedaris);
 library.books.push(maus);
-library.searchTitle("maus");
+
+//library.searchTitle("maus");
 //library.createBook();
 //library.viewAllBooks();
-
+library.searchAuthor("sedaris, david");
 
 
