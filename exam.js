@@ -66,7 +66,29 @@ function menu() {
 			menu();
 			break;
 		case '2':
-			library.createBook(input('Enter a title'), input('Enter Author Last Name, First Name'), input('Enter genre'), input('Size of Book'), input('Checked Status'));
+			library.createBook(input('Enter a title'), input('Enter "Author Last Name, First Name"'), input('Enter genre'), input('Size of Book'), input('Checked Status'));
+			menu();
+			break;
+		case '3':
+			library.removeBookByTitle(input('Enter in the title you are trying to remove'));
+			menu();
+			break;
+		case '4':
+			library.searchTitle(input('Enter in the title you are searching for'));
+			menu();
+			break;
+		case '5':
+			library.searchAuthor(input('Enter in the author "Last name, First name" you are searching for'));
+			menu();
+			break;
+		case '6':
+			library.displayGenre(input('Enter in the genre you would like to view'));
+			menu();
+			break;
+		case '7':
+			process.exit(0);
+		default:
+			console.log('Please enter a valid entry.');
 			menu();
 			break;
 	}
