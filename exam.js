@@ -32,6 +32,7 @@ function input(saying) {
 	return sget(saying).trim().toLowerCase();
 }
 
+var library = new Librarian();
 
 
 
