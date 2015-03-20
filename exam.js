@@ -8,11 +8,15 @@ function Book(title, author, genre, size, status) {
 	this.status = status;
 }
 
+Book.prototype.viewBook = function() {
+	console.log('Title: ' + this.title + ' Author: ' + this.author + ' Genre: ' + this.genre + 'Size of Book: ' + this.size + ' Check-Out Status: ' + this.status);
+};
+
 function Librarian(){
 	this.books = [];
 	this.viewAllBooks = function() {
 		for(var i = 0; i < this.books.length; i++) {
-			console.log('Title: ' + this.books[i].title + ' Author: ' + this.books[i].author + ' Genre: ' + this.books[i].genre + ' Size of Book: ' + this.books[i].size + ' Checked: ' + this.books[i].status);
+			this.books[i].viewBook();
 		}
 	}
 	this.createBook = function(userTitle, userAuthor, userGenre, userSize, userStatus) {
@@ -31,8 +35,7 @@ function Librarian(){
 	this.searchTitle = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
 			if (this.books[i].title === userInput) {
-				console.log(this.books[i]);
-				//when you have time you can just display the individual bit 
+				this.books[i].viewBook();
 				return;
 			}
 		}
@@ -40,7 +43,7 @@ function Librarian(){
 	this.searchAuthor = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
 			if (this.books[i].author === userInput) {
-				console.log(this.books[i]);
+				this.books[i].viewBook();
 				return;
 			}
 		}
@@ -48,8 +51,7 @@ function Librarian(){
 	this.displayGenre = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
 			if (this.books[i].genre === userInput) {
-				console.log(this.books[i]);
-				return;
+				this.books[i].viewBook();
 			}
 		}
 	};
@@ -57,14 +59,14 @@ function Librarian(){
 		for(var i = 0; i < this.books.length; i++) {
 			if (this.books[i].title === userTitle) {
 				this.books[i]["status"] = userStatus;
-				console.log(this.books[i]);
+				this.books[i].viewBook();
 			}
 		}	
 	};
 	this.displayStatus = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
 			if (this.books[i].status === userInput) {
-				console.log(this.books[i]);
+				this.books[i].viewBook();
 			}
 		}
 	}
@@ -75,7 +77,7 @@ function input(saying) {
 }
 
 function menu() {
-	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - Quit')) {
+	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - View by Check-Out Status \n9 - Quit')) {
 		case '1':
 			library.viewAllBooks();
 			menu();
@@ -105,6 +107,10 @@ function menu() {
 			menu();
 			break;
 		case '8':
+			library.displayStatus(input('Enter in the Check-Out status you would like to view'));
+			menu();
+			break;
+		case '9':
 			process.exit(0);
 		default:
 			console.log('Please enter a valid entry.');
@@ -121,7 +127,8 @@ library.books.push(mobyDick);
 library.books.push(sedaris);
 library.books.push(maus);
 
-
+// maus.viewBook();
+// library.viewAllBooks();
 menu();
 
 
