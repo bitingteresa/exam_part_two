@@ -7,13 +7,12 @@ function Book(title, author, genre, size, status) {
 	this.size = size;
 	this.status = status;
 }
-//prototype for display one book then can throw it into the view all books - do this at the END
 
 function Librarian(){
 	this.books = [];
 	this.viewAllBooks = function() {
 		for(var i = 0; i < this.books.length; i++) {
-			console.log('Title: ' + this.books[i].title + ' Author: ' + this.books[i].author + ' Genre: ' + this.books[i].genre + ' Size of Book: ' + this.books[i].size + ' Checked: ' + this.books[i].status);
+			console.log(console.log('Title: ' + this.books[i].title + ' Author: ' + this.books[i].author + ' Genre: ' + this.books[i].genre + ' Size of Book: ' + this.books[i].size + ' Checked: ' + this.books[i].status));
 		}
 	}
 	this.createBook = function() {
@@ -48,7 +47,10 @@ function Librarian(){
 	};
 	this.displayGenre = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
-			
+			if (this.books[i].genre === userInput) {
+				console.log(this.books[i]);
+				return;
+			}
 		}
 	}
 }
@@ -68,8 +70,9 @@ library.books.push(maus);
 //library.searchTitle("maus");
 //library.createBook();
 //library.searchAuthor("sedaris, david");
-library.removeBookByTitle("maus");
-library.viewAllBooks();
+// library.removeBookByTitle("maus");
+// library.viewAllBooks();
+library.displayGenre("fiction");
 
 
 
