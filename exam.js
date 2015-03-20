@@ -20,7 +20,7 @@ function Librarian(){
 			this.books[i].viewBook();
 		}
 	}
-	this.createBook = function(userTitle, userAuthor, userGenre, userSize, userStatus, overdue) {
+	this.createBook = function(userTitle, userAuthor, userGenre, userSize, userStatus, userOverdue) {
 		this.books.push(new Book(userTitle, userAuthor, userGenre, userSize, userStatus, userOverdue));
 		console.log('Added');
 	};
@@ -86,7 +86,7 @@ function input(saying) {
 }
 
 function menu() {
-	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - View by Check-Out Status \n9 - Mark a book as Overdue \n10 - Quit')) {
+	switch(input('\nPlease Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - View by Check-Out Status \n9 - Mark a book as Overdue \n10 - Quit')) {
 		case '1':
 			library.viewAllBooks();
 			menu();
