@@ -52,6 +52,14 @@ function Librarian(){
 				return;
 			}
 		}
+	};
+	this.changeStatus = function(userTitle, userStatus) {
+		for(var i = 0; i < this.books.length; i++) {
+			if (this.books[i].title === userTitle) {
+				this.books[i]["status"] = userStatus;
+				console.log(this.books[i]);
+			}
+		}	
 	}
 }
 
@@ -102,12 +110,7 @@ library.books.push(mobyDick);
 library.books.push(sedaris);
 library.books.push(maus);
 
-//library.searchTitle("maus");
-//library.createBook();
-//library.searchAuthor("sedaris, david");
-// library.removeBookByTitle("maus");
-// library.viewAllBooks();
-// library.displayGenre("fiction");
+
 menu();
 
 
