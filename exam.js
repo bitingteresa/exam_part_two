@@ -28,6 +28,10 @@ function Librarian(){
 	};
 }
 
+function input(saying) {
+	return sget(saying).trim().toLowerCase();
+}
+
 
 
 
