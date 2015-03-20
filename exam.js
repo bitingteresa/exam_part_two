@@ -12,11 +12,11 @@ function Librarian(){
 	this.books = [];
 	this.viewAllBooks = function() {
 		for(var i = 0; i < this.books.length; i++) {
-			console.log(console.log('Title: ' + this.books[i].title + ' Author: ' + this.books[i].author + ' Genre: ' + this.books[i].genre + ' Size of Book: ' + this.books[i].size + ' Checked: ' + this.books[i].status));
+			console.log('Title: ' + this.books[i].title + ' Author: ' + this.books[i].author + ' Genre: ' + this.books[i].genre + ' Size of Book: ' + this.books[i].size + ' Checked: ' + this.books[i].status);
 		}
 	}
-	this.createBook = function() {
-		this.books.push(new Book(input('Enter a title'), input('Enter Author Last Name, First Name'), input('Enter genre'), input('Size of Book'), input('Checked Status')));
+	this.createBook = function(userTitle, userAuthor, userGenre, userSize, userStatus) {
+		this.books.push(new Book(userTitle, userAuthor, userGenre, userSize, userStatus));
 		console.log('Added');
 	};
 	this.removeBookByTitle = function(userInput) {
@@ -59,6 +59,19 @@ function input(saying) {
 	return sget(saying).trim().toLowerCase();
 }
 
+function menu() {
+	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Quit')) {
+		case '1':
+			library.viewAllBooks();
+			menu();
+			break;
+		case '2':
+			library.createBook(input('Enter a title'), input('Enter Author Last Name, First Name'), input('Enter genre'), input('Size of Book'), input('Checked Status'));
+			menu();
+			break;
+	}
+}
+
 var library = new Librarian();
 var mobyDick = new Book("moby dick", "melville, herman", "fiction", "long", "in");
 var sedaris = new Book("dress up your family in corduory and denim", "sedaris, david", "nonfiction", "short", "out");
@@ -72,7 +85,7 @@ library.books.push(maus);
 //library.searchAuthor("sedaris, david");
 // library.removeBookByTitle("maus");
 // library.viewAllBooks();
-library.displayGenre("fiction");
-
+// library.displayGenre("fiction");
+menu();
 
 
