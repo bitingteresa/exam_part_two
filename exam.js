@@ -60,6 +60,13 @@ function Librarian(){
 				console.log(this.books[i]);
 			}
 		}	
+	};
+	this.displayStatus = function(userInput) {
+		for(var i = 0; i < this.books.length; i++) {
+			if (this.books[i].status === userInput) {
+				console.log(this.books[i]);
+			}
+		}
 	}
 }
 
