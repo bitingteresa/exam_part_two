@@ -1,11 +1,4 @@
-/* - The software should track the library's inventory of books
-- Each book listing should include the title, author, genre (Fiction, Non-Fiction, etc.), length, and checked-in/checked-out status
-- Librarians should be able to:
-a.) add books to the inventory
-b.) remove books from the inventory 
-c.) view a list of all the books in the library
-d.) view a list of all the books in a given genre
-e.) search for a book by title or author */
+var sget = require('sget');
 
 function Book(title, author, genre, size, status) {
 	this.title = title;
@@ -14,3 +7,27 @@ function Book(title, author, genre, size, status) {
 	this.size = size;
 	this.status = status;
 }
+//prototype for given genre to display or throw it in the Librarian function
+
+function Librarian(){
+	this.books = [];
+	this.viewAllBooks = function() {
+
+	}
+	this.createBook = function() {
+
+	};
+	this.removeBook = function(userInput) {
+
+	};
+	this.searchTitle = function(userInput) {
+
+	};
+	this.searchAuthor = function(userInput) {
+
+	};
+}
+
+
+
+
