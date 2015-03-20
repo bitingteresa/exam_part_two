@@ -12,7 +12,9 @@ function Book(title, author, genre, size, status) {
 function Librarian(){
 	this.books = [];
 	this.viewAllBooks = function() {
-
+		for(var i = 0; i < this.books.length; i++) {
+			console.log('Title: ' + this.books[i].title + ' Author: ' + this.books[i].author + ' Genre: ' + this.books[i].genre + ' Size of Book: ' + this.books[i].size + ' Checked: ' + this.books[i].status);
+		}
 	}
 	this.createBook = function() {
 
@@ -33,12 +35,13 @@ function input(saying) {
 }
 
 var library = new Librarian();
-var mobyDick = new Book("moby dick", "melville, herman", "fiction", "long", "checked in");
-var sedaris = new Book("dress up your family in corduory and denim", "sedaris, david", "nonfiction", "short", "checked out");
-var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "checked in");
+var mobyDick = new Book("moby dick", "melville, herman", "fiction", "long", "in");
+var sedaris = new Book("dress up your family in corduory and denim", "sedaris, david", "nonfiction", "short", "out");
+var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "in");
 library.books.push(mobyDick);
 library.books.push(sedaris);
 library.books.push(maus);
+library.viewAllBooks();
 
 
 
