@@ -1,15 +1,16 @@
 var sget = require('sget');
 
-function Book(title, author, genre, size, status) {
+function Book(title, author, genre, size, status, overdue) {
 	this.title = title;
 	this.author = author;
 	this.genre = genre;
 	this.size = size;
 	this.status = status;
+	this.overdue = overdue;
 }
 
 Book.prototype.viewBook = function() {
-	console.log('Title: ' + this.title + ' Author: ' + this.author + ' Genre: ' + this.genre + 'Size of Book: ' + this.size + ' Check-Out Status: ' + this.status);
+	console.log('TITLE: ' + this.title + ' AUTHOR: ' + this.author + ' GENRE: ' + this.genre + ' SIZE: ' + this.size + ' CHECK-OUT: ' + this.status + ' OVERDUE: ' + this.overdue);
 };
 
 function Librarian(){
@@ -19,8 +20,8 @@ function Librarian(){
 			this.books[i].viewBook();
 		}
 	}
-	this.createBook = function(userTitle, userAuthor, userGenre, userSize, userStatus) {
-		this.books.push(new Book(userTitle, userAuthor, userGenre, userSize, userStatus));
+	this.createBook = function(userTitle, userAuthor, userGenre, userSize, userStatus, overdue) {
+		this.books.push(new Book(userTitle, userAuthor, userGenre, userSize, userStatus, userOverdue));
 		console.log('Added');
 	};
 	this.removeBookByTitle = function(userInput) {
@@ -69,6 +70,14 @@ function Librarian(){
 				this.books[i].viewBook();
 			}
 		}
+	};
+	this.changeOverdue = function(userTitle, userOverdue) {
+		for(var i = 0; i < this.books.length; i++) {
+			if (this.books[i].title === userTitle) {
+				this.books[i]["overdue"] = userOverdue;
+				this.books[i].viewBook();
+			}
+		}	
 	}
 }
 
@@ -77,13 +86,13 @@ function input(saying) {
 }
 
 function menu() {
-	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - View by Check-Out Status \n9 - Quit')) {
+	switch(input('Please Choose an Option \n1 - View all Books \n2 - Add a new Book \n3 - Remove a Book by Title \n4 - Search by Title \n5 - Search by Author \n6 - Display Books by Genre \n7 - Change Check-Out Status of Book \n8 - View by Check-Out Status \n9 - Mark a book as Overdue \n10 - Quit')) {
 		case '1':
 			library.viewAllBooks();
 			menu();
 			break;
 		case '2':
-			library.createBook(input('Enter a title'), input('Enter "Author Last Name, First Name"'), input('Enter genre'), input('Size of Book'), input('Checked Status'));
+			library.createBook(input('Enter a title'), input('Enter "Author Last Name, First Name"'), input('Enter genre'), input('Size of Book'), input('Checked Status'), input('Overdue'));
 			menu();
 			break;
 		case '3':
@@ -111,6 +120,10 @@ function menu() {
 			menu();
 			break;
 		case '9':
+			library.changeOverdue(input('Enter in title you would like to change Overdue status'), input('Enter in Overdue Status'));
+			menu();
+			break;
+		case '10':
 			process.exit(0);
 		default:
 			console.log('Please enter a valid entry.');
@@ -120,9 +133,9 @@ function menu() {
 }
 
 var library = new Librarian();
-var mobyDick = new Book("moby dick", "melville, herman", "fiction", "long", "in");
-var sedaris = new Book("dress up your family in corduory and denim", "sedaris, david", "nonfiction", "short", "out");
-var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "in");
+var mobyDick = new Book("moby dick", "melville, herman", "fiction", "long", "in", "no");
+var sedaris = new Book("dress up your family in corduory and denim", "sedaris, david", "nonfiction", "short", "out", "no");
+var maus = new Book("maus", "spiegelman, art", "graphic novel", "short", "in", "yes");
 library.books.push(mobyDick);
 library.books.push(sedaris);
 library.books.push(maus);
