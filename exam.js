@@ -18,14 +18,16 @@ function Librarian(){
 	}
 	this.createBook = function() {
 		this.books.push(new Book(input('Enter a title'), input('Enter Author Last Name, First Name'), input('Enter genre'), input('Size of Book'), input('Checked Status')));
+		console.log('Added');
 	};
 	this.removeBookByTitle = function(userInput) {
-		// for(var i = 0; i < this.books.length; i++) {
-		// 	if (this.books[i] === userInput) {
-
-		// 	}
-
-		// }
+		for(var i = 0; i < this.books.length; i++) {
+			if (this.books[i].title === userInput) {
+				this.books.splice(i, 1)
+				console.log('Removed');
+				return;
+			}
+		}
 	};
 	this.searchTitle = function(userInput) {
 		for(var i = 0; i < this.books.length; i++) {
@@ -65,7 +67,9 @@ library.books.push(maus);
 
 //library.searchTitle("maus");
 //library.createBook();
-//library.viewAllBooks();
-library.searchAuthor("sedaris, david");
+//library.searchAuthor("sedaris, david");
+library.removeBookByTitle("maus");
+library.viewAllBooks();
+
 
 
